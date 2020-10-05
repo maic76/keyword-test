@@ -14,7 +14,7 @@ This is a simple test to validate your comprehension and technical skills on Lar
 - Run the database migration and seeder
 
 ## Database Test Records
-After running the database migration and seed, your local database should have some records like this:
+After running the database migration and seed, your local database should look like this:
 
 | url                                                                        	| created_at          	| updated_at          	|
 |----------------------------------------------------------------------------	|---------------------	|---------------------	|
@@ -23,6 +23,7 @@ After running the database migration and seed, your local database should have s
 | https://www.hairclippersclub.com/6-best-pubic-hair-trimmers-for-men-women/ 	| 2020-10-05 21:43:12 	| 2020-10-05 21:43:12 	|
 | https://care.ladieshaircaring.com/pubic-hair-trimmer/                      	| 2020-10-05 21:43:12 	| 2020-10-05 21:43:12 	|
 
+## Retrieving the data using the REST API
 With this data, users should be able to get a single record from the database when searching by URL, example:
 
 - When searching for `www.nytimes.com`, `nytimes.com` or `nytimes.com/wirecutter/reviews/best-pubic-hair-trimmer/` user should a get database result from the API like:
@@ -41,6 +42,7 @@ Complete the following tasks:
 - Write the necessary code in the controller [WebsiteController.php](app/Http/Controllers/API/WebsiteController.php) to make the search by domain work.
 - Write JavaScript code in the Vue.js component [WebsiteSearchComponent.vue](resources/js/components/WebsiteSearchComponent.vue) for the front-end part of this task, the search bar should return a single result.
 - Once your controller is ready, the tests should work.
+- Push your code back to your fork and send it to us by email.
 
 ### Important points
 - Your code is clean, easy to ready and documented.
