@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use WebsiteSeeder;
 
 class WebsitesTest extends TestCase
 {
@@ -16,7 +17,9 @@ class WebsitesTest extends TestCase
 
     public function testAll()
     {
+          $this->seed();
         $response = $this->get('/api/websites');
+        //dd($response);
         $response->assertStatus(200)->assertJsonCount(4);
     }
 }

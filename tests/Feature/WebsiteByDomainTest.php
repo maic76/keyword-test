@@ -15,6 +15,7 @@ class WebsiteByDomainTest extends TestCase
 
 	public function testWithWww()
 	{
+		 $this->seed(); //running seeds on testing db
 		// Make sure we get results when searching for domains with www
 		$this->postJson('/api/websites/search', ['domain' => 'www.nytimes.com'])
 			->assertJsonFragment(['url' => 'https://www.nytimes.com/wirecutter/reviews/best-pubic-hair-trimmer/']);
@@ -39,6 +40,7 @@ class WebsiteByDomainTest extends TestCase
 	 */
 	public function testWithOnlyDomain()
 	{
+		$this->seed(); //running seeds on testing db
 		// Test with simple domains
 		$this->postJson('/api/websites/search', ['domain' => 'ladieshaircaring.com'])
 			->assertJsonFragment(['url' => 'https://care.ladieshaircaring.com/pubic-hair-trimmer/']);
@@ -61,6 +63,7 @@ class WebsiteByDomainTest extends TestCase
 	 */
 	public function testWithSubdomain()
 	{
+		$this->seed(); //running seeds on testing db
 		// Test for urls with subdomain
 		$this->postJson('/api/websites/search', ['domain' => 'care.ladieshaircaring.com'])
 			->assertJsonFragment(['url' => 'https://care.ladieshaircaring.com/pubic-hair-trimmer/']);
@@ -81,6 +84,7 @@ class WebsiteByDomainTest extends TestCase
 	 */
 	public function testWithSlug()
 	{
+		$this->seed(); //running seeds on testing db
 		// Search with slug
 		$this->postJson('/api/websites/search', ['domain' => 'ladieshaircaring.com/pubic-hair-trimmer/'])
 			->assertJsonFragment(['url' => 'https://care.ladieshaircaring.com/pubic-hair-trimmer/']);
@@ -97,6 +101,7 @@ class WebsiteByDomainTest extends TestCase
 	 */
 	public function testBySubdomainAndSlug()
 	{
+		$this->seed(); //running seeds on testing db
 		// Test for URLs with both subdomain and slug
 		$this->postJson('/api/websites/search', ['domain' => 'care.ladieshaircaring.com/pubic-hair-trimmer/'])
 			->assertJsonFragment(['url' => 'https://care.ladieshaircaring.com/pubic-hair-trimmer/']);
@@ -117,6 +122,7 @@ class WebsiteByDomainTest extends TestCase
 	 */
 	public function testByUrl()
 	{
+		$this->seed(); //running seeds on testing db
 		// Test with full url
 		$this->postJson('/api/websites/search', ['domain' => 'https://www.nytimes.com/wirecutter/reviews/best-pubic-hair-trimmer/'])
 			->assertJsonFragment(['url' => 'https://care.ladieshaircaring.com/pubic-hair-trimmer/']);
