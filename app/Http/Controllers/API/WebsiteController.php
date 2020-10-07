@@ -34,7 +34,7 @@ class WebsiteController extends Controller
 		$domain = $request->domain;
 
 		if (empty($domain)) {
-			return response()->json(['error' => 'Invalid domain']);
+			return response()->json(['error' => 'Invalid domain'],500);
 		}else{
 			//if not Empty query search term, get a website first record with a like filter
 			$results = Website::where('url','like','%'.$domain.'%')->first();
@@ -45,6 +45,6 @@ class WebsiteController extends Controller
 			return response()->json(['error' => 'No URL found'], 404);
 		}
 
-		return response()->json($results);
+		return response()->json([$results],200);
     }
 }

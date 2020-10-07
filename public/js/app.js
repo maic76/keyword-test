@@ -1939,6 +1939,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  data: function data() {
+    return {
+      search: '',
+      result: ''
+    };
+  },
+  methods: {
+    getResult: function getResult() {
+      var data = this.search;
+
+      var _this = this;
+
+      axios.post('/api/websites/search', {
+        domain: data
+      }).then(function (response) {
+        _this.result = response.data;
+      })["catch"](function (error) {
+        _this.result = error.response.data.error;
+        console.log("Search: " + error);
+      });
+    }
   }
 });
 
@@ -37526,60 +37548,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("form", { attrs: { action: "" } }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control-lg",
-                    attrs: {
-                      type: "text",
-                      name: "domain",
-                      id: "domain",
-                      "aria-describedby": "domainHelp",
-                      placeholder: "Enter a Domain Name"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", { attrs: { action: "" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
                     {
-                      staticClass: "form-text text-muted",
-                      attrs: { id: "domainHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "Enter a domain URL to get results based on the database records."
-                      )
-                    ]
-                  )
-                ]),
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
+                  staticClass: "form-control-lg",
+                  attrs: {
+                    type: "text",
+                    name: "domain",
+                    id: "domain",
+                    "aria-describedby": "domainHelp",
+                    placeholder: "Enter a Domain Name"
+                  },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.search = $event.target.value
+                    }
+                  }
+                }),
                 _vm._v(" "),
                 _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("Submit")]
+                  "small",
+                  {
+                    staticClass: "form-text text-muted",
+                    attrs: { id: "domainHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "Enter a domain URL to get results based on the database records."
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "results" })
-            ])
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.getResult()
+                    }
+                  }
+                },
+                [_vm._v("Submit")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "results" }, [_vm._v(_vm._s(_vm.result))])
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49814,6 +49855,8 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.baseURL = 'http://localhost/keyword-test/public'; //defining root path
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -49918,8 +49961,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/davidleal/dev/keyword/keyword-test/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/davidleal/dev/keyword/keyword-test/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\mlanda\Documents\laragon\www\keyword-test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\mlanda\Documents\laragon\www\keyword-test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

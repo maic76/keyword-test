@@ -20,7 +20,7 @@ try {
  */
 
 window.axios = require('axios');
-
+ window.axios.defaults.baseURL = 'http://localhost/keyword-test/public'; //defining root path
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
