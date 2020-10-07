@@ -12,6 +12,8 @@ class WebsitesTest extends TestCase
      *
      * @return void
      */
+    use \Illuminate\Foundation\Testing\DatabaseMigrations;
+
     public function testAll()
     {
         $response = $this->get('/api/websites');

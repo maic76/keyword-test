@@ -11,6 +11,8 @@ class WebsiteByDomainTest extends TestCase
 	 *
 	 * @return void
 	 */
+	use \Illuminate\Foundation\Testing\DatabaseMigrations;
+
 	public function testWithWww()
 	{
 		// Make sure we get results when searching for domains with www
